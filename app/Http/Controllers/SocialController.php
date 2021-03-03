@@ -25,6 +25,7 @@ class SocialController extends Controller
         } else {
             $user = User::firstOrCreate([
                 'name'                => $twitterSocial->getName(),
+                'username'            => $twitterSocial->getNickname(),
                 'email'               => $twitterSocial->getEmail(),
                 'profile_photo_path'  => $twitterSocial->getAvatar(),
                 'provider_id'         => $twitterSocial->getId(),

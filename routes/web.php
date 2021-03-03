@@ -6,17 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Thujohn\Twitter\Facades\Twitter;
 
 Route::get('auth/{provider}', [SocialController::class, 'redirect']);
 Route::get('auth/{provider}/callback', [SocialController::class, 'callback']);
@@ -34,6 +24,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('tweets', [TweetController::class, 'tweets'])->name('tweets');
+Route::get('/bookmarks', function () {
+    return Inertia::render('Dashboard');
+})->name('bookmarks');
+
+Route::get('/followers', function () {
+    return Inertia::render('Dashboard');
+})->name('followers');
+
 Route::post('tweet', [TweetController::class, 'tweet'])->name('tweet');
+
+Route::get('tweets', [TweetController::class, 'tweets'])->name('tweets');
 Route::get('tweet/{tweet}', [TweetController::class, 'singleTweet'])->name('tweet.single');

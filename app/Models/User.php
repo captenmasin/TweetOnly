@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\Time;
+use App\Enums\UserCacheKeys;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -18,7 +21,6 @@ class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -53,15 +55,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
     public function setTwitterTokens()
     {
         $token = decrypt($this->access_token);
@@ -71,9 +64,11 @@ class User extends Authenticatable
 
     public function getTweets()
     {
-        $this->setTwitterTokens();
+        return Cache::remember('user_'.$this->id.':tweets', now()->addHour(), function () {
+            $this->setTwitterTokens();
 
-        return Twitter::getUserTimeline(['count' => 20, 'format' => 'json']);
+            return Twitter::getUserTimeline(['count' => 20, 'format' => 'json']);
+        });
     }
 
     public function getTweet(int $tweet)
@@ -88,7 +83,7 @@ class User extends Authenticatable
         $this->setTwitterTokens();
 
         if (is_null($images)) {
-            return Twitter::postTweet(['status' => $content, 'format' => 'json']);
+            Twitter::postTweet(['status' => $content, 'format' => 'json']);
         } else {
             $allImages = [];
             foreach ($images as $image) {
@@ -101,7 +96,9 @@ class User extends Authenticatable
                 $allImages[] = $uploaded_media->media_id_string;
             }
 
-            return Twitter::postTweet(['status' => $content, 'media_ids' => $allImages, 'format' => 'json']);
+            Twitter::postTweet(['status' => $content, 'media_ids' => $allImages, 'format' => 'json']);
         }
+
+        Cache::forget('user_'.$this->id.':tweets');
     }
 }

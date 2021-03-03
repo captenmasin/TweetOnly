@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'eba28dbb52a8e231cab760547412b2e713c51d3d',
+    'reference' => '868fcb495d031dc36141f72ed033e224e8065b93',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -69,6 +69,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '3e9d791b67d0a2912922b7b7c7312f4b37af41e4',
+    ),
+    'barryvdh/laravel-debugbar' => 
+    array (
+      'pretty_version' => 'v3.5.2',
+      'version' => '3.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cae0a8d1cb89b0f0522f65e60465e16d738e069b',
     ),
     'barryvdh/laravel-ide-helper' => 
     array (
@@ -675,7 +684,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'eba28dbb52a8e231cab760547412b2e713c51d3d',
+      'reference' => '868fcb495d031dc36141f72ed033e224e8065b93',
     ),
     'laravel/sail' => 
     array (
@@ -748,6 +757,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '1e7e6be2dc543bf466236fb171e5b20e1b06aee6',
+    ),
+    'maximebf/debugbar' => 
+    array (
+      'pretty_version' => 'v1.16.5',
+      'version' => '1.16.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6d51ee9e94cff14412783785e79a4e7ef97b9d62',
     ),
     'mobiledetect/mobiledetectlib' => 
     array (
@@ -1322,6 +1340,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'f65f217b3314504a1ec99c2d6ef69016bb13490f',
+    ),
+    'symfony/debug' => 
+    array (
+      'pretty_version' => 'v4.4.19',
+      'version' => '4.4.19.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'af4987aa4a5630e9615be9d9c3ed1b0f24ca449c',
     ),
     'symfony/deprecation-contracts' => 
     array (
