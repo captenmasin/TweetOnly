@@ -16,16 +16,16 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Thujohn\Twitter\Facades\Twitter;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
     use HasFactory;
-    use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasSettingsTable;
+    use HasRoles;
 
     public $defaultSettings = [
         'darkMode' => false,
