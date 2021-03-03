@@ -20,6 +20,7 @@ class SocialController extends Controller
         $users = User::where(['email' => $twitterSocial->getEmail()])->first();
         if ($users) {
             Auth::login($users);
+
             return redirect()->route('dashboard');
         } else {
             $user = User::firstOrCreate([

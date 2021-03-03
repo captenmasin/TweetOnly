@@ -2,13 +2,12 @@
 
 namespace App\Notifications;
 
+use Illuminate\Notifications\Notification;
 use NotificationChannels\Twitter\TwitterChannel;
 use NotificationChannels\Twitter\TwitterStatusUpdate;
-use Illuminate\Notifications\Notification;
 
 class NewTweet extends Notification
 {
-
     /**
      * Get the notification's delivery channels.
      *

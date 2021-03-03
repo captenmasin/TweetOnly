@@ -16,7 +16,7 @@ class TweetController extends Controller
 
         return redirect()->back()->with([
             'tweeted'         => true,
-            'tweeted_content' => $request->tweet_content
+            'tweeted_content' => $request->tweet_content,
         ]);
     }
 }

@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile_photo_path', 'provider_id', 'provider', 'access_token', 'access_token_secret'
+        'name', 'email', 'password', 'profile_photo_path', 'provider_id', 'provider', 'access_token', 'access_token_secret',
     ];
 
     /**
@@ -76,7 +76,7 @@ class User extends Authenticatable
             Twitter::postTweet(['status' => $content, 'format' => 'json']);
         } else {
             $allImages = [];
-            foreach($images as $image){
+            foreach ($images as $image) {
                 $uploadedImage = Storage::put('images', $image);
                 $getUploadedImage = Storage::get($uploadedImage);
                 $uploaded_media = Twitter::uploadMedia(['media' => $getUploadedImage]);

@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TweetController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\SocialController;
-use \Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +34,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::post('tweet', [TweetController::class, 'tweet'])->name('tweet');;
+Route::post('tweet', [TweetController::class, 'tweet'])->name('tweet');
