@@ -15,7 +15,7 @@ createApp({
             initialPage: JSON.parse(el.dataset.page),
             resolveComponent: (name) =>
                 import(`./Pages/${name}`).then(({ default: page }) => {
-                    if (page.layout === undefined) {
+                    if (page.layout === undefined && name !== 'Welcome' && !name.includes('Auth')) {
                         page.layout = AppLayout;
                     }
                     return page;

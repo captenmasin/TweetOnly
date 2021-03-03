@@ -19,7 +19,11 @@
                             Select images!
                         </label>
                         <br>
-                        {{ form.image }}
+                        <div class="flex space-x-4">
+                            <div v-for="(image, index) in imagePreviews">
+                                <img :src="image" class="w-24 h-24" :key="index" :alt="'Image preview: ' + index"/>
+                            </div>
+                        </div>
                         <br><br>
                         <div class="flex justify-end">
                             <jet-button>
@@ -58,6 +62,7 @@ export default {
     },
     data() {
         return {
+            imagePreviews: [],
             form: this.$inertia.form({
                 tweet_content: 'test',
                 image: null
@@ -69,8 +74,17 @@ export default {
             this.form.post(route('tweet'))
         },
         selectImage() {
+            this.imagePreviews = [];
             if (this.$refs.image && typeof this.$refs.image.files !== 'undefined') {
                 this.form.image = this.$refs.image.files
+
+                for (var i = 0, len = this.$refs.image.files.length; i < len; i++) {
+                    const reader = new FileReader()
+                    reader.readAsDataURL(this.$refs.image.files[i])
+                    reader.onload = (e) => {
+                        this.imagePreviews.push(e.target.result)
+                    }
+                }
             }
         },
     },

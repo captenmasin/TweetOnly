@@ -3,12 +3,10 @@
         <page-title>
             Profile
         </page-title>
-        <div>
-            <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
-                <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
-                    <delete-user-form class="mt-10 sm:mt-0"/>
-                </template>
-            </div>
+        <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+            <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
+                <delete-user-form class="mt-10 sm:mt-0"/>
+            </template>
         </div>
     </div>
 </template>

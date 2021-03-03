@@ -62,6 +62,24 @@ class User extends Authenticatable
         return Twitter::getTweet($tweet);
     }
 
+    public function getFollowers($count = 20)
+    {
+        return Cache::remember('user_'.$this->id.':'.$count.'_followers', now()->addHour(), function () use ($count) {
+            $this->setTwitterTokens();
+
+            return Twitter::getFollowers(['count' => $count]);
+        });
+    }
+
+    public function getFollowing($count = 20)
+    {
+        return Cache::remember('user_'.$this->id.':'.$count.'_followers', now()->addHour(), function () use ($count) {
+            $this->setTwitterTokens();
+
+            return Twitter::getFriends(['count' => $count]);
+        });
+    }
+
     public function tweet($content, $images = null)
     {
         $this->setTwitterTokens();

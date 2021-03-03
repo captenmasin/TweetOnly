@@ -34,6 +34,8 @@ Route::get('bookmarks', function () {
 })->name('bookmarks');
 
 Route::get('followers', function () {
+    dd(Auth::user()->getFollowers());
+
     return Inertia::render('Dashboard');
 })->name('followers');
 
