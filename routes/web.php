@@ -36,3 +36,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('tweets', [TweetController::class, 'tweets'])->name('tweets');
 Route::post('tweet', [TweetController::class, 'tweet'])->name('tweet');
+Route::get('tweet/{tweet}', [TweetController::class, 'singleTweet'])->name('tweet.single');

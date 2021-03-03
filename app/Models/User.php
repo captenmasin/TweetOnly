@@ -76,6 +76,13 @@ class User extends Authenticatable
         return Twitter::getUserTimeline(['count' => 20, 'format' => 'json']);
     }
 
+    public function getTweet(int $tweet)
+    {
+        $this->setTwitterTokens();
+
+        return Twitter::getTweet($tweet);
+    }
+
     public function tweet($content, $images = null)
     {
         $this->setTwitterTokens();
