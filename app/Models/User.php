@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -68,17 +69,27 @@ class User extends Authenticatable
         Twitter::reconfig(['token' => $token, 'secret' => $secret]);
     }
 
+    public function getTweets()
+    {
+        $this->setTwitterTokens();
+
+        return Twitter::getUserTimeline(['count' => 20, 'format' => 'json']);
+    }
+
     public function tweet($content, $images = null)
     {
         $this->setTwitterTokens();
 
         if (is_null($images)) {
-            Twitter::postTweet(['status' => $content, 'format' => 'json']);
+            return Twitter::postTweet(['status' => $content, 'format' => 'json']);
         } else {
             $allImages = [];
             foreach ($images as $image) {
                 $uploadedImage = Storage::put('images', $image);
-                $getUploadedImage = Storage::get($uploadedImage);
+                try {
+                    $getUploadedImage = Storage::get($uploadedImage);
+                } catch (FileNotFoundException $e) {
+                }
                 $uploaded_media = Twitter::uploadMedia(['media' => $getUploadedImage]);
                 $allImages[] = $uploaded_media->media_id_string;
             }

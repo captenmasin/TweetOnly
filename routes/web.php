@@ -34,4 +34,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::get('tweets', [TweetController::class, 'tweets'])->name('tweets');
 Route::post('tweet', [TweetController::class, 'tweet'])->name('tweet');

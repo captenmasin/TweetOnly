@@ -19,4 +19,9 @@ class TweetController extends Controller
             'tweeted_content' => $request->tweet_content,
         ]);
     }
+
+    public function tweets(Request $request)
+    {
+        return Auth::user()->getTweets();
+    }
 }
