@@ -37,6 +37,8 @@
                     <div v-for="(tweet, index) in tweets" :key="index" class="py-4 border-b border-gray-200">
                         {{ tweet.text }} - Fav: {{ tweet.favorite_count }}
                     </div>
+                    hello
+
                 </div>
             </div>
         </div>
