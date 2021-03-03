@@ -5,29 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SocialController extends Controller
 {
-    public function redirect($provider)
+    public function redirect($provider): RedirectResponse
     {
         return Socialite::driver($provider)->redirect();
     }
 
-    public function callback()
+    public function callback($provider)
     {
         $twitterSocial = Socialite::driver('twitter')->user();
         $users = User::where(['email' => $twitterSocial->getEmail()])->first();
         if ($users) {
             Auth::login($users);
-            return redirect('/home');
+            return redirect()->route('dashboard');
         } else {
             $user = User::firstOrCreate([
-                'name'        => $twitterSocial->getName(),
-                'email'       => $twitterSocial->getEmail(),
-                'image'       => $twitterSocial->getAvatar(),
-                'provider_id' => $twitterSocial->getId(),
-                'provider'    => 'twitter',
+                'name'               => $twitterSocial->getName(),
+                'email'              => $twitterSocial->getEmail(),
+                'profile_photo_path' => $twitterSocial->getAvatar(),
+                'provider_id'        => $twitterSocial->getId(),
+                'provider'           => 'twitter',
             ]);
+
             return redirect()->route('dashboard');
         }
     }
