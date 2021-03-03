@@ -1,10 +1,8 @@
 <template>
-    <app-layout>
-        <template #header>
-            <page-title>
-                Dashboard
-            </page-title>
-        </template>
+    <div>
+        <page-title>
+            Dashboard
+        </page-title>
 
         <div class="py-12">
             <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
@@ -38,13 +36,15 @@
                 </div>
             </div>
         </div>
-    </app-layout>
+    </div>
 </template>
 
 <script>
 import AppLayout from '@/Layouts/AppLayout'
 import JetButton from '@/Jetstream/Button'
-import PageTitle from "@/Components/PageTitle";
+import PageTitle from "@/Components/PageTitle"
+import {Inertia} from '@inertiajs/inertia'
+
 
 export default {
     components: {
@@ -53,11 +53,11 @@ export default {
         JetButton,
     },
     props: {
-        errors: Object
+        errors: Object,
+        tweets: Array
     },
     data() {
         return {
-            tweets: [],
             form: this.$inertia.form({
                 tweet_content: 'test',
                 image: null
@@ -73,14 +73,6 @@ export default {
                 this.form.image = this.$refs.image.files
             }
         },
-        getTweets(){
-            axios.get(route('tweets'), {}).then(response => {
-                this.tweets = response.data
-            })
-        }
     },
-    mounted() {
-        this.getTweets()
-    }
 }
 </script>

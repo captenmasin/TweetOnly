@@ -2,10 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\Time;
-use App\Enums\UserCacheKeys;
 use Glorand\Model\Settings\Traits\HasSettingsTable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,9 +10,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
-use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Thujohn\Twitter\Facades\Twitter;
 
@@ -31,32 +25,16 @@ class User extends Authenticatable
         'darkMode' => false,
     ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'profile_photo_path', 'provider_id', 'provider', 'access_token', 'access_token_secret',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
+        'access_token',
+        'access_token_secret',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -68,12 +46,12 @@ class User extends Authenticatable
         Twitter::reconfig(['token' => $token, 'secret' => $secret]);
     }
 
-    public function getTweets()
+    public function getTweets($count = 20)
     {
-        return Cache::remember('user_'.$this->id.':tweets', now()->addHour(), function () {
+        return Cache::remember('user_'.$this->id.':tweets', now()->addHour(), function () use ($count) {
             $this->setTwitterTokens();
 
-            return Twitter::getUserTimeline(['count' => 20, 'format' => 'json']);
+            return json_decode(Twitter::getUserTimeline(['count' => $count, 'format' => 'json']));
         });
     }
 

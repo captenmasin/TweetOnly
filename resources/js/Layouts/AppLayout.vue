@@ -105,12 +105,6 @@
                 </div>
             </nav>
 
-            <header v-if="$slots.header">
-                <div class="max-w-4xl mx-auto text-center pt-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header"></slot>
-                </div>
-            </header>
-
             <main>
                 <slot></slot>
             </main>

@@ -34,6 +34,8 @@ class SocialController extends Controller
                 'access_token_secret' => encrypt($twitterSocial->tokenSecret),
             ]);
 
+            Auth::login($user);
+
             return redirect()->route('dashboard');
         }
     }

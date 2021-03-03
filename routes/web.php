@@ -21,15 +21,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('dashboard', function () {
+    return Inertia::render('Dashboard', [
+        'tweets' => fn () => Auth::user()->getTweets(),
+    ]);
 })->name('dashboard');
 
-Route::get('/bookmarks', function () {
-    return Inertia::render('Dashboard');
+Route::get('bookmarks', function () {
+    return Inertia::render('Dashboard', [
+        'tweets' => fn () => Auth::user()->getTweets(),
+    ]);
 })->name('bookmarks');
 
-Route::get('/followers', function () {
+Route::get('followers', function () {
     return Inertia::render('Dashboard');
 })->name('followers');
 

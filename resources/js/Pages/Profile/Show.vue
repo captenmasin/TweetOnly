@@ -1,11 +1,8 @@
 <template>
-    <app-layout>
-        <template #header>
-            <page-title>
-                Profile
-            </page-title>
-        </template>
-
+    <div>
+        <page-title>
+            Profile
+        </page-title>
         <div>
             <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
@@ -13,7 +10,7 @@
                 </template>
             </div>
         </div>
-    </app-layout>
+    </div>
 </template>
 
 <script>
