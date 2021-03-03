@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
@@ -60,20 +61,29 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function routeNotificationForTwitter($notification)
+    public function setTwitterTokens()
     {
-        return [
-            config('services.twitter.client_id'),
-            config('services.twitter.client_secret'),
-            $this->access_token,
-            $this->access_token_secret,
-        ];
+        $token = decrypt($this->access_token);
+        $secret = decrypt($this->access_token_secret);
+        Twitter::reconfig(['token' => $token, 'secret' => $secret]);
     }
 
-    public function tweet($content){
-        $token = $this->access_token;
-        $secret = $this->access_token_secret;
-        Twitter::reconfig(['token' => $token, 'secret' => $secret]);
-        Twitter::postTweet(['status' => $content, 'format' => 'json']);
+    public function tweet($content, $images = null)
+    {
+        $this->setTwitterTokens();
+
+        if (is_null($images)) {
+            Twitter::postTweet(['status' => $content, 'format' => 'json']);
+        } else {
+            $allImages = [];
+            foreach($images as $image){
+                $uploadedImage = Storage::put('images', $image);
+                $getUploadedImage = Storage::get($uploadedImage);
+                $uploaded_media = Twitter::uploadMedia(['media' => $getUploadedImage]);
+                $allImages[] = $uploaded_media->media_id_string;
+            }
+
+            return Twitter::postTweet(['status' => $content, 'media_ids' => $allImages, 'format' => 'json']);
+        }
     }
 }

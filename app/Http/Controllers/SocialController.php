@@ -23,13 +23,13 @@ class SocialController extends Controller
             return redirect()->route('dashboard');
         } else {
             $user = User::firstOrCreate([
-                'name'               => $twitterSocial->getName(),
-                'email'              => $twitterSocial->getEmail(),
-                'profile_photo_path' => $twitterSocial->getAvatar(),
-                'provider_id'        => $twitterSocial->getId(),
-                'provider'           => 'twitter',
-                'access_token'           => $twitterSocial->token,
-                'access_token_secret'           => $twitterSocial->tokenSecret,
+                'name'                => $twitterSocial->getName(),
+                'email'               => $twitterSocial->getEmail(),
+                'profile_photo_path'  => $twitterSocial->getAvatar(),
+                'provider_id'         => $twitterSocial->getId(),
+                'provider'            => 'twitter',
+                'access_token'        => encrypt($twitterSocial->token),
+                'access_token_secret' => encrypt($twitterSocial->tokenSecret),
             ]);
 
             return redirect()->route('dashboard');
