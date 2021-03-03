@@ -33,8 +33,8 @@
                     </form>
                 </div>
                 <div class="bg-white overflow-hidden shadow sm:rounded-lg p-4 mb-4">
-                    Tweets:<br>
-                    <div v-for="(tweet, index) in tweets" :key="index" class="py-2 border-b border-gray-200">
+                    <h3 class="font-bold text-2xl">Tweets</h3>
+                    <div v-for="(tweet, index) in tweets" :key="index" class="py-4 border-b border-gray-200">
                         {{ tweet.text }} - Fav: {{ tweet.favorite_count }}
                     </div>
                 </div>
