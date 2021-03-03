@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '868fcb495d031dc36141f72ed033e224e8065b93',
+    'reference' => '3e2fe4623db185d57e6b494b47e3d35923de446a',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -326,6 +326,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '01de0fe5f71c70d1930ee9a80385f9cc28e0f63a',
+    ),
+    'glorand/laravel-model-settings' => 
+    array (
+      'pretty_version' => '4.2.1',
+      'version' => '4.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c98ba958347d22c10eb34f01a5031ba85d1e9ea1',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -684,7 +693,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '868fcb495d031dc36141f72ed033e224e8065b93',
+      'reference' => '3e2fe4623db185d57e6b494b47e3d35923de446a',
     ),
     'laravel/sail' => 
     array (

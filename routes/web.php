@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TweetController;
+use App\Http\Controllers\UserSettingsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::get('/bookmarks', function () {
 Route::get('/followers', function () {
     return Inertia::render('Dashboard');
 })->name('followers');
+
+Route::post('{user}/settings', [UserSettingsController::class, 'set'])->name('settings');
 
 Route::post('tweet', [TweetController::class, 'tweet'])->name('tweet');
 

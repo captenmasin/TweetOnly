@@ -37,8 +37,8 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
         '98caa11a197f6516a8e48aa4abb5ccc6' => __DIR__ . '/..' . '/inertiajs/inertia-laravel/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -166,6 +166,7 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'GrahamCampbell\\ResultType\\' => 26,
+            'Glorand\\Model\\Settings\\' => 23,
         ),
         'F' => 
         array (
@@ -543,6 +544,10 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'Glorand\\Model\\Settings\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/glorand/laravel-model-settings/src',
         ),
         'Fruitcake\\Cors\\' => 
         array (
@@ -2400,6 +2405,20 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
         'Fruitcake\\Cors\\CorsServiceProvider' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/CorsServiceProvider.php',
         'Fruitcake\\Cors\\HandleCors' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/HandleCors.php',
+        'Glorand\\Model\\Settings\\Console\\CreateSettingsFieldForModel' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Console/CreateSettingsFieldForModel.php',
+        'Glorand\\Model\\Settings\\Console\\CreateSettingsTable' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Console/CreateSettingsTable.php',
+        'Glorand\\Model\\Settings\\Contracts\\SettingsManagerContract' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Contracts/SettingsManagerContract.php',
+        'Glorand\\Model\\Settings\\Exceptions\\ModelSettingsException' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Exceptions/ModelSettingsException.php',
+        'Glorand\\Model\\Settings\\Managers\\AbstractSettingsManager' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Managers/AbstractSettingsManager.php',
+        'Glorand\\Model\\Settings\\Managers\\FieldSettingsManager' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Managers/FieldSettingsManager.php',
+        'Glorand\\Model\\Settings\\Managers\\RedisSettingsManager' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Managers/RedisSettingsManager.php',
+        'Glorand\\Model\\Settings\\Managers\\TableSettingsManager' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Managers/TableSettingsManager.php',
+        'Glorand\\Model\\Settings\\ModelSettingsServiceProvider' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/ModelSettingsServiceProvider.php',
+        'Glorand\\Model\\Settings\\Models\\ModelSettings' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Models/ModelSettings.php',
+        'Glorand\\Model\\Settings\\Traits\\HasSettings' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Traits/HasSettings.php',
+        'Glorand\\Model\\Settings\\Traits\\HasSettingsField' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Traits/HasSettingsField.php',
+        'Glorand\\Model\\Settings\\Traits\\HasSettingsRedis' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Traits/HasSettingsRedis.php',
+        'Glorand\\Model\\Settings\\Traits\\HasSettingsTable' => __DIR__ . '/..' . '/glorand/laravel-model-settings/src/Traits/HasSettingsTable.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
         'GrahamCampbell\\ResultType\\Result' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Result.php',
         'GrahamCampbell\\ResultType\\Success' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Success.php',

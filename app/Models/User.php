@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\Time;
 use App\Enums\UserCacheKeys;
+use Glorand\Model\Settings\Traits\HasSettingsTable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,11 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasSettingsTable;
+
+    public $defaultSettings = [
+        'darkMode' => false,
+    ];
 
     /**
      * The attributes that are mass assignable.

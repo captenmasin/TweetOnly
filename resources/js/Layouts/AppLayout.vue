@@ -1,14 +1,14 @@
 <template>
     <div>
         <jet-banner/>
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav>
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <div class="flex-shrink-0 flex items-center">
                                 <inertia-link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto"/>
+                                    <jet-application-mark class="block h-9 w-auto dark:text-white"/>
                                 </inertia-link>
                             </div>
 
@@ -21,6 +21,10 @@
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
+                            <button class="mode-toggle" @click="modeToggle" :class="darkMode">
+                                <icon-sun class="w-4 h-4 text-white" v-if="darkMode" />
+                                <icon-moon class="w-4 h-4" v-else />
+                            </button>
                             <div class="ml-3 relative">
                                 <jet-dropdown align="right" width="48">
                                     <template #trigger>
@@ -124,9 +128,13 @@ import JetDropdown from '@/Jetstream/Dropdown'
 import JetDropdownLink from '@/Jetstream/DropdownLink'
 import JetNavLink from '@/Jetstream/NavLink'
 import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+import IconSun from "@/Components/Icons/IconSun";
+import IconMoon from "@/Components/Icons/IconMoon";
 
 export default {
     components: {
+        IconMoon,
+        IconSun,
         JetApplicationMark,
         JetBanner,
         JetDropdown,
@@ -135,8 +143,10 @@ export default {
         JetResponsiveNavLink,
     },
 
+    props: ['userDarkMode'],
     data() {
         return {
+            darkMode: this.userDarkMode,
             showingNavigationDropdown: false,
             navItems: [
                 {
@@ -159,6 +169,31 @@ export default {
         logout() {
             this.$inertia.post(route('logout'));
         },
-    }
+        dark() {
+            document.querySelector('body').classList.add('dark')
+            this.darkMode = true
+            this.$emit('dark')
+        },
+
+        light() {
+            document.querySelector('body').classList.remove('dark')
+            this.darkMode = false
+            this.$emit('light')
+        },
+
+        modeToggle() {
+            if(this.darkMode || document.querySelector('body').classList.contains('dark')) {
+                this.light()
+                axios.post(route('settings', {user: this.$page.props.user.id}), {setting: 'darkMode', value: false}).then(response => {
+                    console.log(response);
+                })
+            } else {
+                this.dark()
+                axios.post(route('settings', {user: this.$page.props.user.id}), {setting: 'darkMode', value: true}).then(response => {
+                    console.log(response);
+                })
+            }
+        },
+    },
 }
 </script>
