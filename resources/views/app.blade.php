@@ -17,7 +17,7 @@
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-body antialiased {{ Auth::check() && Auth::user()->settings()->get('darkMode') ? 'dark' : '' }}">
+    <body class="font-body antialiased {{ Auth::check() && optional(Auth::user())->settings()->get('darkMode') ? 'dark' : '' }}">
         @inertia
     </body>
 </html>
