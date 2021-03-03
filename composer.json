@@ -19,6 +19,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "socialiteproviders/twitter": "^4.1",
+        "thujohn/twitter": "^2.3",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

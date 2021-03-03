@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Thujohn\Twitter\Facades\Twitter;
 
 class User extends Authenticatable
 {
@@ -26,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile_photo_path', 'provider_id', 'provider'
+        'name', 'email', 'password', 'profile_photo_path', 'provider_id', 'provider', 'access_token', 'access_token_secret'
     ];
 
     /**
@@ -58,4 +59,21 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function routeNotificationForTwitter($notification)
+    {
+        return [
+            config('services.twitter.client_id'),
+            config('services.twitter.client_secret'),
+            $this->access_token,
+            $this->access_token_secret,
+        ];
+    }
+
+    public function tweet($content){
+        $token = $this->access_token;
+        $secret = $this->access_token_secret;
+        Twitter::reconfig(['token' => $token, 'secret' => $secret]);
+        Twitter::postTweet(['status' => $content, 'format' => 'json']);
+    }
 }

@@ -592,6 +592,20 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
     );
 
     public static $prefixesPsr0 = array (
+        't' => 
+        array (
+            'tmhOAuth' => 
+            array (
+                0 => __DIR__ . '/..' . '/atymic/tmhoauth',
+            ),
+        ),
+        'T' => 
+        array (
+            'Thujohn\\Twitter' => 
+            array (
+                0 => __DIR__ . '/..' . '/thujohn/twitter/src',
+            ),
+        ),
         'M' => 
         array (
             'Mockery' => 
@@ -657,6 +671,7 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',
         'App\\Models\\TeamInvitation' => __DIR__ . '/../..' . '/app/Models/TeamInvitation.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Notifications\\NewTweet' => __DIR__ . '/../..' . '/app/Notifications/NewTweet.php',
         'App\\Policies\\TeamPolicy' => __DIR__ . '/../..' . '/app/Policies/TeamPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -5526,6 +5541,24 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
+        'Thujohn\\Twitter\\Facades\\Twitter' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Facades/Twitter.php',
+        'Thujohn\\Twitter\\Traits\\AccountActivityTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/AccountActivityTrait.php',
+        'Thujohn\\Twitter\\Traits\\AccountTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/AccountTrait.php',
+        'Thujohn\\Twitter\\Traits\\BlockTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/BlockTrait.php',
+        'Thujohn\\Twitter\\Traits\\DirectMessageTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/DirectMessageTrait.php',
+        'Thujohn\\Twitter\\Traits\\FavoriteTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/FavoriteTrait.php',
+        'Thujohn\\Twitter\\Traits\\FriendshipTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/FriendshipTrait.php',
+        'Thujohn\\Twitter\\Traits\\GeoTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/GeoTrait.php',
+        'Thujohn\\Twitter\\Traits\\HelpTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/HelpTrait.php',
+        'Thujohn\\Twitter\\Traits\\ListTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/ListTrait.php',
+        'Thujohn\\Twitter\\Traits\\MediaTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/MediaTrait.php',
+        'Thujohn\\Twitter\\Traits\\SearchTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/SearchTrait.php',
+        'Thujohn\\Twitter\\Traits\\StatusTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/StatusTrait.php',
+        'Thujohn\\Twitter\\Traits\\TrendTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/TrendTrait.php',
+        'Thujohn\\Twitter\\Traits\\UserTrait' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Traits/UserTrait.php',
+        'Thujohn\\Twitter\\Twitter' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Twitter.php',
+        'Thujohn\\Twitter\\TwitterServiceProvider' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/TwitterServiceProvider.php',
+        'Thujohn\\Twitter\\Utils' => __DIR__ . '/..' . '/thujohn/twitter/src/Thujohn/Twitter/Utils.php',
         'Tightenco\\Ziggy\\BladeRouteGenerator' => __DIR__ . '/..' . '/tightenco/ziggy/src/BladeRouteGenerator.php',
         'Tightenco\\Ziggy\\CommandRouteGenerator' => __DIR__ . '/..' . '/tightenco/ziggy/src/CommandRouteGenerator.php',
         'Tightenco\\Ziggy\\Ziggy' => __DIR__ . '/..' . '/tightenco/ziggy/src/Ziggy.php',
@@ -5639,6 +5672,7 @@ class ComposerStaticInit3565fd3056cd1fa1b93494acd1434f08
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
+        'tmhOAuth' => __DIR__ . '/..' . '/atymic/tmhoauth/tmhOAuth.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'bd47e787a0fdcd461dfaa301a5c4ffb67b52df7c',
+    'reference' => 'e77558d766c8c14ecd9743c46b15fbb7bed37928',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -28,6 +28,15 @@
       array (
       ),
       'reference' => '8d8f88b3b3830916be94292c1fbce84433efb1aa',
+    ),
+    'atymic/tmhoauth' => 
+    array (
+      'pretty_version' => '0.8.6',
+      'version' => '0.8.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f24746d8ef2a44f62d0cbca9f3fcc3a320c99e05',
     ),
     'bacon/bacon-qr-code' => 
     array (
@@ -544,7 +553,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'bd47e787a0fdcd461dfaa301a5c4ffb67b52df7c',
+      'reference' => 'e77558d766c8c14ecd9743c46b15fbb7bed37928',
     ),
     'laravel/sail' => 
     array (
@@ -1405,6 +1414,15 @@
       array (
       ),
       'reference' => '75a63c33a8577608444246075ea0af0d052e452a',
+    ),
+    'thujohn/twitter' => 
+    array (
+      'pretty_version' => '2.3.0',
+      'version' => '2.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '514c28023fcd2250bbb2120e0224b13f82cc5150',
     ),
     'tightenco/ziggy' => 
     array (

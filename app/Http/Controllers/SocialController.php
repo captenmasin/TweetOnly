@@ -28,6 +28,8 @@ class SocialController extends Controller
                 'profile_photo_path' => $twitterSocial->getAvatar(),
                 'provider_id'        => $twitterSocial->getId(),
                 'provider'           => 'twitter',
+                'access_token'           => $twitterSocial->token,
+                'access_token_secret'           => $twitterSocial->tokenSecret,
             ]);
 
             return redirect()->route('dashboard');

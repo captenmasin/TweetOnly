@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'tmhOAuth' => array($vendorDir . '/atymic/tmhoauth'),
+    'Thujohn\\Twitter' => array($vendorDir . '/thujohn/twitter/src'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'Kylewm\\Brevity' => array($vendorDir . '/kylewm/brevity/src'),
     'Detection' => array($vendorDir . '/mobiledetect/mobiledetectlib/namespaced'),

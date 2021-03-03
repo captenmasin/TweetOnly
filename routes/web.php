@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\SocialController;
+use \Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,16 @@ use App\Http\Controllers\SocialController;
 Route::get('auth/{provider}', [SocialController::class, 'redirect']);
 Route::get('auth/{provider}/callback', [SocialController::class, 'callback']);
 
+Route::get('test', function () {
+    Auth::user()->tweet("Test");
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+        'canLogin'       => Route::has('login'),
+        'canRegister'    => Route::has('register'),
         'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'phpVersion'     => PHP_VERSION,
     ]);
 });
 
