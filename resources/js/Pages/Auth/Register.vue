@@ -22,6 +22,10 @@
             <breeze-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
         </div>
 
+        <a href="/auth/twitter">
+            Login with twitter
+        </a>
+
         <div class="flex items-center justify-end mt-4">
             <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
                 Already registered?

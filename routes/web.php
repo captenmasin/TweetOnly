@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SocialController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,6 +15,10 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('auth/twitter', [SocialController::class, 'redirect']);
+Route::get('auth/twitter/callback', [SocialController::class, 'callback']);
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
